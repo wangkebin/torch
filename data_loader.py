@@ -10,10 +10,10 @@ class iris_dataloader(Dataset):
 
         assert os.path.exists(self.data_path), "dataset does not exists at " + data_path
 
-        df = pd.read_csv(self.data_path, name=[0,1,2,3,4])
+        df = pd.read_csv(self.data_path, names=[0,1,2,3,4])
 
-        dic = {"Iris-setosa":0, "Iris-versicolor":1, "Iris-virginica":2}
-        df[4] = df[4].map(dic)
+        # dic = {"Iris-setosa":0, "Iris-versicolor":1, "Iris-virginica":2}
+        df[4] = df[4].map({"Iris-setosa":0, "Iris-versicolor":1, "Iris-virginica":2})
 
         data = df.iloc[:,:4]
         label = df.iloc[:,4:]
@@ -25,7 +25,10 @@ class iris_dataloader(Dataset):
     
         self.data_num = len(label)
 
+        print("df:", df)
         print("data set size", self.data_num)
+        print("data set", self.data)
+        print("label set", self.label)
 
     def __len__(self):
         return self.data_num
