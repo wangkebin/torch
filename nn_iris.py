@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from data_loader import iris_dataloader
+from iris.iris_data_loader import iris_dataloader
 
 #init 
 
